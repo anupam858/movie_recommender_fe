@@ -1,0 +1,14 @@
+.filter{
+    display: flex;
+    margin: 2rem 1rem;
+    align-items: baseline;
+}
+.sort{
+    margin: 0rem 1rem;
+}
+.sort > label{
+    margin-right: 0.5rem;
+}
+.genre{
+    display: flex;
+}

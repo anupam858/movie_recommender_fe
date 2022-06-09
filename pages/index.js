@@ -4,17 +4,23 @@ import axios from 'axios';
 import { useState, useEffect} from 'react';
 import Filter from '../components/Filter';
 import MovieList from '../components/MovieList';
+import Pagination from '../components/Pagination';
 
 export default function Home() {
 
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
+  const [page, setPage] = useState(0)
+  const [count, setCount] = useState(0)
+  const [filter, setFilter] = useState({})
   useEffect(
     () =>{
-      axios.get("http://127.0.0.1:5000/",{withCredentials:false}).then(
+      console.log(filter)
+      setIsLoading(true)
+      axios.get("http://127.0.0.1:5000/"+String(page),{params:filter, withCredentials:false}).then(
         function (res) {
-          console.log(res.data)
           setMovies(res.data.movies);
+          setCount(res.data.count)
           setIsLoading(false);
         }
         ).catch(function (error){
@@ -23,7 +29,7 @@ export default function Home() {
         );
 
     }
-  ,[]);
+  ,[page]);
 
   return (
     <div className={styles.container}>
@@ -34,12 +40,13 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Filter movies={movies} setMovies={setMovies} />
+        <Filter movies={movies} filter = {filter} setFilter={setFilter} />
         {
         !isLoading?(<MovieList movies={movies}/>):(<p>Loading</p>)
         }
+        <Pagination pageCount={count} currPage= {page} setCurrPage={setPage}/>
       </main>
-
+      
     </div>
   )
 }

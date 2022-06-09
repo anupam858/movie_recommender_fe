@@ -1,0 +1,21 @@
+.pagination{
+    display: flex;
+    max-width: 100%;
+    list-style: none;
+    flex-wrap: wrap;
+    padding: 0rem;
+  }
+  .pagination >li{
+    margin: 0.5rem 0rem;
+  }
+  .pagination > li > a{
+    padding: 0.2rem 0.5rem;
+    border: 1px solid #47ccde ;
+    outline: none;
+    cursor: pointer;
+  }
+  .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+    background-color: #47ccde ;
+    border-color: #47ccde;
+    outline: none ;
+  }
