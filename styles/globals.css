@@ -27,7 +27,7 @@ nav {
   font-size: xx-large;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   body{
     margin: 0rem 1rem;
   }

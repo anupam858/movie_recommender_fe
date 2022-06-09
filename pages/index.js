@@ -6,6 +6,7 @@ import Filter from '../components/Filter';
 import MovieList from '../components/MovieList';
 import Pagination from '../components/Pagination';
 
+
 export default function Home() {
 
   const [movies, setMovies] = useState([]);
@@ -15,9 +16,9 @@ export default function Home() {
   const [filter, setFilter] = useState({})
   useEffect(
     () =>{
-      console.log(filter)
       setIsLoading(true)
-      axios.get("http://127.0.0.1:5000/"+String(page),{params:filter, withCredentials:false}).then(
+      console.log(process.env.API_URL)
+      axios.get(process.env.NEXT_PUBLIC_API_URL+String(page),{params:filter, withCredentials:false}).then(
         function (res) {
           setMovies(res.data.movies);
           setCount(res.data.count)
@@ -29,7 +30,7 @@ export default function Home() {
         );
 
     }
-  ,[page]);
+  ,[page, filter]);
 
   return (
     <div className={styles.container}>
