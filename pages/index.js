@@ -17,7 +17,6 @@ export default function Home() {
   useEffect(
     () =>{
       setIsLoading(true)
-      console.log(process.env.API_URL)
       axios.get(process.env.NEXT_PUBLIC_API_URL+String(page),{params:filter, withCredentials:false}).then(
         function (res) {
           setMovies(res.data.movies);
