@@ -46,4 +46,8 @@
     appearance: none;
 }
 
-
+@media (max-width: 720px) {
+    .sort{
+        margin: 0rem 0rem;
+    }
+}    
